@@ -62,38 +62,26 @@
           <version>2.8.2</version>
         </plugin>
 
-          <plugin>
+         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.5</version>
             <executions>
-              <execution>
-                <goals>
-                  <goal>prepare-agent</goal>
-                </goals>
-              </execution>
-              <execution>
-                <id>jacoco-report</id>
-                <phase>test</phase>
-                <goals>
-                  <goal>report</goal>
-                </goals>
-                <!-- default target/jscoco/site/* -->
-                <configuration>
-                  <outputDirectory>target/jacoco-report</outputDirectory>
-                  <dataFile>${project.build.directory}/coverage-reports/jacoco.exec</dataFile>
-                  <rules>
-                    <rule>
-                      <element>CLASS</element>
-                      <excludes>
-                        <exclude>com.asimio.demo.Application</exclude>
-                      </excludes>
-                    </rule>
-                  </rules>
-                </configuration>
-              </execution>
+                <execution>
+                    <id>jacoco-initialize</id>
+                    <goals>
+                        <goal>prepare-agent</goal>
+                    </goals>
+                </execution>
+                <execution>
+                    <id>jacoco-site</id>
+                    <phase>test</phase>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>
+                </execution>
             </executions>
-          </plugin>
+        </plugin>
 
       </plugins>
     </pluginManagement>
